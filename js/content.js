@@ -1,12 +1,12 @@
 let images = [
-    "https://razu381.sirv.com/chrome%20extension/378537.jpg","https://razu381.sirv.com/chrome%20extension/551940.jpg","https://razu381.sirv.com/chrome%20extension/695763.jpg","https://razu381.sirv.com/chrome%20extension/770789%20(1).jpg"
+    "https://razu381.sirv.com/chrome%20extension/378537.jpg","https://razu381.sirv.com/chrome%20extension/551940.jpg","https://razu381.sirv.com/chrome%20extension/695763.jpg","https://razu381.sirv.com/chrome%20extension/137984.jpg","https://razu381.sirv.com/chrome%20extension/253312.jpg","https://razu381.sirv.com/chrome%20extension/417639.jpg","https://razu381.sirv.com/chrome%20extension/585606.jpg","https://razu381.sirv.com/chrome%20extension/634013.jpg","https://razu381.sirv.com/chrome%20extension/754303.jpg","https://razu381.sirv.com/chrome%20extension/833182.jpg"
 ];
 
 let randomIndex = Math.floor(Math.random() * images.length);
 
 
 let background = document.querySelector('html');
-background.style.background = 'radial-gradient(68.34% 50% at 50% 50%, #2D9AFF 0%, #41DEE8 0%, #A22DFF 100%)';
+console.log(`${images[randomIndex]}`)
 background.style.backgroundImage = `url(${images[randomIndex]})`;
 background.style.backgroundSize = "cover";
 background.style.backgroundPosition = "center center";
@@ -24,6 +24,8 @@ overlay.style.width = '100%';
 overlay.style.height = '100%';
 overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)'; // Adjust opacity as needed
 overlay.style.zIndex = 0;
+overlay.style.filter = 'blur(10px)';
+
 
 // Append the overlay to the html element
 background.appendChild(overlay);
@@ -50,6 +52,7 @@ const blockPage = () => {
   chrome.runtime.sendMessage({ action: "getReferer" }, (response) => {
     if (response && response.referer && (response.referer.includes("mail.google.com") || response.referer.includes("clicks.aweber.com"))) {
       if (currentURL.includes('youtube.com')) {
+       
         console.log('Access allowed to YouTube from an allowed referrer');
       } else if (currentURL.includes('facebook.com') || currentURL.includes('netflix.com')) {
         console.log('Blocking Facebook or Netflix');
@@ -61,6 +64,7 @@ const blockPage = () => {
         injectCSS("css/style.css");
       } else if (currentURL.includes('facebook.com') || currentURL.includes('netflix.com')) {
         console.log('Blocking Facebook or Netflix');
+        background.style.background = "radial-gradient(circle, #4F2D6B 0%, #131862 100%)";
         injectCSS("css/style.css");
         //blockPage();
       }
