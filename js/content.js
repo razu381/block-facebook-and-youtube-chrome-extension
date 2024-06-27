@@ -1,14 +1,12 @@
 let images = [
-    'https://i.postimg.cc/R0z4JZcb/378537.jpg',
-    'https://i.postimg.cc/Z5NJqdyd/551940.jpg',
-    'https://i.postimg.cc/xTh0YRqQ/695763.jpg',
-    'https://i.postimg.cc/tgty3GkR/770789-1.jpg',
+    "https://razu381.sirv.com/chrome%20extension/378537.jpg","https://razu381.sirv.com/chrome%20extension/551940.jpg","https://razu381.sirv.com/chrome%20extension/695763.jpg","https://razu381.sirv.com/chrome%20extension/770789%20(1).jpg"
 ];
 
 let randomIndex = Math.floor(Math.random() * images.length);
 
 
 let background = document.querySelector('html');
+background.style.background = 'radial-gradient(68.34% 50% at 50% 50%, #2D9AFF 0%, #41DEE8 0%, #A22DFF 100%)';
 background.style.backgroundImage = `url(${images[randomIndex]})`;
 background.style.backgroundSize = "cover";
 background.style.backgroundPosition = "center center";
